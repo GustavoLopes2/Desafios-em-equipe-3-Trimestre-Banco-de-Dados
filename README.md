@@ -3,8 +3,8 @@ Esse repositório será exclusivamente utilizado para o desenvolvimento do proje
 
 Equipe:
   
+  LÍDER: Daniel Leite Costa Silva,
   Gustavo Lopes Feitosa,
-  Daniel Leite Costa Silva,
   Maycol Douglas Gomes,
   Rubens Matheus,
   Gustavo Manoel Dias Polli
