@@ -1243,20 +1243,11 @@ WHERE item_venda.venda_id = venda.id
   AND produto.nome = 'CERVEJA SKOL LATÃO 473ML PCT 12 UNIDADES'
   AND cliente.id = venda.cliente_id;
 
-
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- 12 (Extra) Estou gostando muito de Bando de dados 
+SELECT 
+	SUM(produto.preco_custo) 'Soma de custo', 
+	MAX(produto.preco_custo) 'Max de custo', 
+	MIN(produto.preco_custo) 'Min de custo', 
+	AVG(produto.preco_custo) 'Media de custo'
+FROM 
+	produto; 
