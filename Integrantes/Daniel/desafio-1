@@ -1,0 +1,37 @@
+REALIZAÇÃO DO PROJETO - 19/09
+
+ENTENDENDO JOIN:
+
+Sintaxe: A síntaxe do JOIN pode ser entendida da mesma forma que são explicados os conjuntos, existem 5 tipos para entender e dominar o JOIN.
+
+O INNER JOIN: Ele é a intersecção entre as tabelas, isso é buscar o que tem nas duas tabelas.
+
+FROM tabela_a
+INNER JOIN table_b
+ON table_a.column_name = table_b.column_name;
+
+LEFT JOIN: É como ter duas tabelas, uma na direita e outra na esquerda. Usando o LEFT JOIN o comando irá pegar tudo o que tem na tabela da direita, incluindo o que tem na
+intersecção da tabela esquerda. É como se fosse o A-B do conjuntos considerando tudo o que tem na intersecção.
+
+FROM tabela_a
+LEFT JOIN tabela_b
+ON table_a.column_name = table_b.column.name;
+
+RIGHT JOIN: É semelhante ao LEFT JOIN, só que invés de fazer o A-B é feito o B-A e segue considerando a intersecção. Existem um comando de RIGHT que pega somente o que
+tem na tabela B, assim seria o B-A sem a intersecção. O comando é RIGHT EXCLUDING JOIN.
+
+FROM tabela_a
+LEFT JOIN tabela_b
+ON table_a.column_name = table_b.column_name;
+
+FULL JOIN: É o comando utilizado para juntas as duas tabelas em uma única resultante. Seria o A U B (A União de B).
+
+FROM tabela_a
+FULL OUTER JOIN tabela_b
+ON table_a.column_name = table_b.column_name;
+
+CROSS JOIN: Ele executa uma ação que associa os itens de uma tabela a outra.
+
+FROM tabela1 AS t
+CROSS JOIN tabela2 AS tp
+WHERE t.id = 1 OR tp.id = 1
