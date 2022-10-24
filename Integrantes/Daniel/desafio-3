@@ -1,0 +1,67 @@
+-- 1. Liste os nomes de todas as cidades ATIVAS do estado PARANÁ.
+SELECT cidade.nome, cidade.ativo
+FROM cidade, estado
+WHERE estado.id = cidade.estado_id
+AND cidade.ativo = 'S'
+AND estado.sigla = 'PR';
+
+-- 2. Liste o nome e o telefone dos fornecedores que estão ativos e moram em PARANAVAÍ.
+-- NAO TEM ESSA TABELA FORNECEDORES 
+
+-- 3. Escreva o comando que liste os nomes dos clientes que moram nas seguintes cidades: MARINGÁ, PARANAVAÍ e CIARNORTE. 
+SELECT cliente.nome, cidade.nome
+FROM cidade, cliente, estado
+WHERE cidade.id = cliente.cidade_id
+AND cidade.nome = "MARINGÁ" OR "PARANAVAÍ" OR "CIANORTE"; -- NÃO TEM 'CIANORTE' NO SCRIPT E NÃO TEM NENHUM CLIENTE VINCULADO COM MARINGÁ
+
+-- 4.	Liste o nome e o telefone dos funcionarios ATIVOS que moram na região SUL.
+SELECT funcionario.nome, funcionario.telefone, estado.sigla
+FROM funcionario, estado, cidade
+WHERE cidade.id = cidade.estado_id
+AND estado.sigla = "PR" OR "SC" OR "RS"; -- NÃO EXISTE 'funcionario.telefone' ou seja não tem telefone na tabela funcionario.
+
+-- 5. Informe o nome dos produtos e a respectiva unidade de medida da venda com o código 3.
+SELECT produto.nome, produto.unidade_medida_id
+FROM produto, venda, cliente
+WHERE venda.id = venda.cliente_id
+AND produto.unidade_medida_id = '3'; -- NAO EXISTE MEDIDA DE VENDA COM O CODGIO 3
+
+-- 6 Liste os nomes dos funcionários que já venderam o produto 'REFRIGERANTE COCA-COLA GARRAFA PET 3 L'.
+SELECT funcionario.nome, produto.nome
+FROM funcionario, venda, item_venda, produto
+WHERE item_venda.venda_id = venda.id
+AND venda.funcionario_id = funcionario.id
+AND produto.id = item_venda.produto_id
+AND produto.nome = 'REFRIGERANTE COCA-COLA GARRAFA PET 3 L';
+
+-- 7. Liste os nomes dos fornecedores dos estados PARANÁ, MATO GROSSO e RIO GRANDE DO NORTE.
+-- A tabela fornecedores não foi criada, apenas a tabela de estados
+
+-- 8.Liste os nomes dos produtos vendidos no dia XXX (pode escolher um dia existente).
+SELECT produto.nome
+FROM produto, venda
+WHERE venda.data = '2022-10-03 20:03:07';
+
+-- 9.Feliz com um bom atendimento, um determinado cliente entra em contato com o gerente para enviar uma lembrança ao funcionário.
+-- O problema é que, além de não informar a sua identidade, ele não lembra do nome do funcionário. Sabe apenas que,na conversa, moraram 
+-- na mesma cidade e possuem o mesmo nome. Neste contexto, faça as consultas necesárias para identificar o funcionário. 
+
+SELECT funcionario.nome, cliente.nome, cliente.cidade_id, funcionario.cidade_id
+FROM funcionario, cliente
+WHERE funcionario.nome = cliente.nome;
+
+10. Um cliente entra em contato com o gerente solicitando um possível erro de troco. O cliente não lembra o nome do funcionário, 
+mas possui as seguintes informações:
+ (1) nome completo do cliente: Sophia Lima
+ (2) CPF do cliente: 321.109.923-95
+ (3) cidade onde cliente nasceu: BAURU/SÃO PAULO
+ (4) a cliente alega estar faltando 30 reais
+Neste contexto, faça as consultas necessárias para descobrir o possível nome do funcionário. Justifique!
+
+SELECT funcionario.nome, cliente.nome
+FROM cliente, venda, funcionario
+WHERE cliente.cpf_cnpj = '321.109.923-95' 
+AND venda.funcionario_id = funcionario.id
+AND cliente.id = venda.cliente_id
+AND venda.cliente_id = 62
+AND funcionario.cidade_id = 1;
